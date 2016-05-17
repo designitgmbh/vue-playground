@@ -1,4 +1,4 @@
-# vue-boilerplate
+# vue-playground
 
 > A Vue.js playground to start your large scale client side application
 > It includes [vue](http://vuejs.org/), [vue-router](http://router.vuejs.org/en/index.html), [vuex](http://vuex.vuejs.org/en/index.html) and [vue-strap](http://yuche.github.io/vue-strap/) out of the box.
