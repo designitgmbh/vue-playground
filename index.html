@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-playground</title>
+  </head>
+  <body>
+    <div id="app">
+        <p>
+          <!-- use v-link directive for navigation. -->
+          <a v-link="{ path: '/' }">Home</a>
+          /
+          <a v-link="{ path: '/foo' }">Foo</a>
+          /
+          <a v-link="{ path: '/bar' }">Bar</a>
+        </p>
+        <!-- route outlet -->
+        <router-view></router-view>
+    </div>
+  </body>
+</html>
