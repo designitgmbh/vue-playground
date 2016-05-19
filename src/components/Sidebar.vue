@@ -3,7 +3,7 @@
         <li class="sidebar-brand">
             <a v-link="{ path: '/' }">
                 <img class="logo" src="../assets/img/logo.png">
-                ue playground
+                playground
             </a>
         </li>
         <li>
