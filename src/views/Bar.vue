@@ -1,7 +1,5 @@
 <template>
-  <alert type="warning">
-    This is a BAR
-  </alert>
+  BAR is yet not implemented... stay tuned!
 </template>
 <script>
   import {alert as Alert} from 'vue-strap'
