@@ -39,6 +39,9 @@ Also, the main purpose of this repo is to play with Vue which is a great fronten
 ## Collaboration
 
 Send your issues/pull requests thinking that this is a kick starter, not a final polished product. Think what could fit well for the majority of people and if you need some particular scaffold out of the box, I challenge you to fork the repo and do it yourself!
+
+A good pull request would be a vuejs use case where you smashed your brain pulling it off. Then, for the next project, you'll already have it scaffolded in the repo.
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
