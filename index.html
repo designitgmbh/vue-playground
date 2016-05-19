@@ -6,16 +6,26 @@
   </head>
   <body>
     <div id="app">
-        <p>
-          <!-- use v-link directive for navigation. -->
-          <a v-link="{ path: '/' }">Home</a>
-          /
-          <a v-link="{ path: '/foo' }">Foo</a>
-          /
-          <a v-link="{ path: '/bar' }">Bar</a>
-        </p>
-        <!-- route outlet -->
-        <router-view></router-view>
+      <div id="wrapper" :class="{'toggled': sidebarHidden}">
+        <div id="sidebar-wrapper">
+          <sidebar></sidebar>
+        </div>
+        <div id="page-content-wrapper">
+          <!-- route outlet -->
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                  <router-view></router-view>
+                  <a class="btn btn-default" @click="toggleSidebar">
+                    <span v-if="sidebarHidden">Show</span>
+                    <span v-else>Hide</span>
+                    Menu
+                  </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

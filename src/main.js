@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Sidebar from './components/Sidebar'
+import './assets/css/index.styl'
 import 'bootstrap/less/bootstrap.less'
 
 Vue.use(VueRouter)
@@ -19,4 +21,18 @@ router.map(require('./routes').default)
 // Now we can start the app!
 // The router will create an instance of App and mount to
 // the element matching the selector #app.
-router.start(Vue.extend({}), '#app')
+router.start(Vue.extend({
+  components: {
+    Sidebar
+  },
+  methods: {
+    toggleSidebar (evt) {
+      this.sidebarHidden = !this.sidebarHidden
+    }
+  },
+  data () {
+    return {
+      sidebarHidden: false
+    }
+  }
+}), '#app')
