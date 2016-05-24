@@ -1,10 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+
 import Sidebar from './components/Sidebar'
 import './assets/css/index.styl'
 import 'bootstrap/less/bootstrap.less'
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
+
+// emulate REST PUT, PATCH and DELETE methods
+Vue.http.options.emulateHTTP = true
 
 // Create a router instance.
 // You can pass in additional options
