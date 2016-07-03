@@ -1,22 +1,21 @@
 <template>
-    <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-            <a v-link="{ path: '/' }">
-                <img class="logo" src="../assets/img/logo.png">
-                playground
-            </a>
-        </li>
-        <li>
-            <a v-link="{ path: '/foo' }">Foo</a>
-        </li>
-        <li>
-            <a v-link="{ path: '/bar' }">Bar</a>
-        </li>
-    </ul>
+  <ul class="sidebar-nav">
+      <li v-for="item in items">
+          <a v-link="{ path: item.path }">{{item.text}}</a>
+      </li>
+  </ul>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      items: [
+        {text: 'Something', path: '#'},
+        {text: 'Something Else', path: '#'}
+      ]
+    }
+  }
 }
 </script>
 <style lang="stylus">
@@ -39,26 +38,10 @@ export default {
 
     .sidebar-nav li a:hover
         text-decoration: none
-        color: #fff
+        color: #000
         background: rgba(255,255,255,0.2)
 
     .sidebar-nav li a:active,
     .sidebar-nav li a:focus
         text-decoration: none
-
-    .sidebar-nav > .sidebar-brand 
-        height: 65px
-        font-size: 18px
-        line-height: 60px
-
-    .sidebar-nav > .sidebar-brand a
-        color: #999999
-
-    .sidebar-nav > .sidebar-brand img
-        width: 30px;
-        height: 30px;
-
-    .sidebar-nav > .sidebar-brand a:hover
-        color: #fff
-        background: none
 </style>

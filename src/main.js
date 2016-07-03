@@ -2,9 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
-import Sidebar from './components/Sidebar'
 import './assets/css/index.styl'
 import 'bootstrap/less/bootstrap.less'
+import Sidebar from './components/Sidebar'
+import Topbar from './components/Topbar'
+import store from './stores/store'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -28,8 +30,10 @@ router.map(require('./routes').default)
 // mount to the element matching the selector #app.
 router.start(Vue.extend({
   components: {
-    Sidebar
+    Sidebar,
+    Topbar
   },
+  store: store,
   data () {
     return {
       sidebarHidden: false
