@@ -13,10 +13,9 @@
           <li>
             <a @click="toggleSideBar" href="javascript:void(0)">
               <i v-bind:class="[
-                'glyphicon', 
-                {
-                  'glyphicon-menu-hamburger': !sideBarShown, 
-                  'glyphicon glyphicon-remove': sideBarShown 
+                'zi', {
+                  'zi-menu': !sideBarShown, 
+                  'zi-close': sideBarShown 
                 }
               ]"></i>
             </a>
