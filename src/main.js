@@ -4,6 +4,8 @@ import VueResource from 'vue-resource'
 
 import './assets/stylus/index.styl'
 import './assets/icons/zondicons/style.css'
+import './assets/css/animate.css'
+import './resources/transitions.js'
 import 'bootstrap/less/bootstrap.less'
 import 'font-awesome/css/font-awesome.css'
 import Sidebar from './components/Sidebar'

@@ -12,12 +12,8 @@
         <ul class="nav navbar-nav">
           <li>
             <a @click="toggleSideBar" href="javascript:void(0)">
-              <i v-bind:class="[
-                'zi', {
-                  'zi-menu': !sideBarShown, 
-                  'zi-close': sideBarShown 
-                }
-              ]"></i>
+              <i v-show="!sideBarShown" class="zi zi-menu animated" transition="sideBarToggle"></i>
+              <i v-show="sideBarShown" class="zi zi-close animated" transition="sideBarToggle"></i>
             </a>
           </li>
           <li v-for="item in items">
