@@ -1,19 +1,27 @@
 <template>
   <ul class="sidebar-nav">
       <li v-for="item in items">
-          <a v-link="{ path: item.path }">{{item.text}}</a>
+          <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" 
+             @click="changeUrl(item.path)"
+             v-link="{ path: item.path }"
+          >
+             {{item.text}}
+          </a>
       </li>
   </ul>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      items: [
-        {text: 'Something', path: '#'},
-        {text: 'Something Else', path: '#'}
-      ]
+  vuex: {
+    getters: {
+      currentUrl: state => state.url,
+      sideBarShown: state => state.sideBarShown,
+      items: state => state.sideBarItems
+    },
+    actions: {
+      changeUrl: ({ dispatch }, url) => dispatch('SET_URL', url),
+      toggleSideBar: ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
     }
   }
 }

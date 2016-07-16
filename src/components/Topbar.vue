@@ -10,8 +10,24 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          <li>
+            <a @click="toggleSideBar" href="javascript:void(0)">
+              <i v-bind:class="[
+                'glyphicon', 
+                {
+                  'glyphicon-menu-hamburger': !sideBarShown, 
+                  'glyphicon glyphicon-remove': sideBarShown 
+                }
+              ]"></i>
+            </a>
+          </li>
           <li v-for="item in items">
-            <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" @click="changeUrl(item.path)" v-link="{ path: item.path }">{{item.text}}</a>
+            <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" 
+              @click="changeUrl(item.path)" 
+              v-link="{ path: item.path }"
+            >
+              {{item.text}}
+            </a>
           </li>
       </div>
   </nav>
@@ -19,20 +35,15 @@
 
 <script>
 export default {
-  data () {
-    return {
-      items: [
-        {text: 'Foo', path: '/foo'},
-        {text: 'Bar', path: '/bar'}
-      ]
-    }
-  },
   vuex: {
     getters: {
-      currentUrl: state => state.url
+      currentUrl: state => state.url,
+      sideBarShown: state => state.sideBarShown,
+      items: state => state.topBarItems
     },
     actions: {
-      changeUrl: ({ dispatch }, url) => dispatch('SET_URL', url)
+      changeUrl: ({ dispatch }, url) => dispatch('SET_URL', url),
+      toggleSideBar: ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
     }
   }
 }

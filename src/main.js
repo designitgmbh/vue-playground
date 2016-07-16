@@ -34,9 +34,9 @@ router.start(Vue.extend({
     Topbar
   },
   store: store,
-  data () {
-    return {
-      sidebarHidden: false
+  vuex: {
+    getters: {
+      sideBarShown: state => state.sideBarShown
     }
   }
 }), '#app')

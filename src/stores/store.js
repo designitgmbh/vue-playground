@@ -5,12 +5,30 @@ import Vue from 'vue'
 Vue.use(Vuex)
 
 const state = {
-  url: '/'
+  url: '/',
+  sideBarItems: [
+    {text: 'Something', path: '#'},
+    {text: 'Something Else', path: '#'}
+  ],
+  sideBarShown: true,
+  topBarItems: [
+    {text: 'Foo', path: '/foo'},
+    {text: 'Bar', path: '/bar'}
+  ]
 }
 
 const mutations = {
   SET_URL (state, url) {
     state.url = url
+  },
+  SET_SIDEBAR_ITEMS (state, items) {
+    state.sideBarItems = items
+  },
+  SET_TOPBAR_ITEMS (state, items) {
+    state.topBarItems = items
+  },
+  TOGGLE_SIDEBAR (state) {
+    state.sideBarShown = !state.sideBarShown
   }
 }
 
