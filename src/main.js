@@ -2,12 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
+// resources
 import './assets/stylus/index.styl'
 import './assets/icons/zondicons/style.css'
 import './assets/css/animate.css'
-import './resources/transitions.js'
 import 'bootstrap/less/bootstrap.less'
 import 'font-awesome/css/font-awesome.css'
+import './resources/transitions.js'
+
+// components
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 import store from './stores/store'

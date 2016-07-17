@@ -2,33 +2,43 @@
   <nav class="navbar navbar-default topbar-nav">
       <div class="top-header">
         <div class="navbar-header">
-        <a class="navbar-brand topbar-brand" v-link="{ path: '/' }">
-            <img class="logo" src="../assets/img/logo.png">
-            playground
-        </a>
+          <a class="navbar-brand topbar-brand" v-link="{ path: '/' }">
+              <img class="logo" src="../assets/img/logo.png">
+              playground
+          </a>
+        </div>
       </div>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a @click="toggleSideBar" href="javascript:void(0)">
-              <i v-show="!sideBarShown" class="zi zi-menu animated" transition="sideBarToggle"></i>
-              <i v-show="sideBarShown" class="zi zi-close animated" transition="sideBarToggle"></i>
-            </a>
-          </li>
-          <li v-for="item in items">
-            <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" 
-              @click="changeUrl(item.path)" 
-              v-link="{ path: item.path }"
-            >
-              {{item.text}}
-            </a>
-          </li>
+      <div id="navbar" class="navbar-collapse">
+        <div>
+          <ul class="nav navbar-nav">
+            <li>
+              <a @click="toggleSideBar" href="javascript:void(0)">
+                <i v-show="!sideBarShown" class="zi zi-menu animated" transition="sideBarToggle"></i>
+                <i v-show="sideBarShown" class="zi zi-close animated" transition="sideBarToggle"></i>
+              </a>
+            </li>
+            <li v-for="item in items">
+              <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" 
+                @click="changeUrl(item.path)" 
+                v-link="{ path: item.path }"
+              >
+                {{item.text}}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
   </nav>
 </template>
 
 <script>
+import Vue from 'vue'
+
+Vue.transition('sideBarToggle', {
+  enterClass: 'rotateIn',
+  leaveClass: 'hidden'
+})
+
 export default {
   vuex: {
     getters: {
@@ -75,5 +85,16 @@ export default {
 
     .topbar-nav .nav.navbar-nav > li > a.active
       border-bottom: 3px solid #8dc1ff
+
+    @media(max-width:768px)
+      .topbar-nav .nav > li
+        display: inline-block
+
+      .topbar-nav .navbar-collapse
+          overflow: hidden
+          overflow-x: auto
+
+      .topbar-nav .navbar-nav
+        width: 800px
 
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.transition('sideBarToggle', {
+Vue.transition('rotate', {
   enterClass: 'rotateIn',
-  leaveClass: 'hidden'
+  leaveClass: 'rotateOut'
 })

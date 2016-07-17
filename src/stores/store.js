@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import _ from 'underscore'
 
 // Make vue aware of Vuex
 Vue.use(Vuex)
@@ -7,10 +8,10 @@ Vue.use(Vuex)
 const state = {
   url: '/',
   sideBarItems: [
-    {text: 'Something', path: '#'},
-    {text: 'Something Else', path: '#'}
+    {text: 'General', description: 'Basic study settings', path: '/general', icon: 'zi-cog', selected: false},
+    {text: 'Notifications', description: 'Modify type of notifications', path: '/notifications', icon: 'zi-notifications-outline', selected: false}
   ],
-  sideBarShown: true,
+  sideBarShown: false,
   topBarItems: [
     {text: 'Foo', path: '/foo'},
     {text: 'Bar', path: '/bar'}
@@ -23,6 +24,12 @@ const mutations = {
   },
   SET_SIDEBAR_ITEMS (state, items) {
     state.sideBarItems = items
+  },
+  SELECT_SIDEBAR_ITEM (state, item) {
+    state.sideBarItems = _.map(state.sideBarItems, (i) => {
+      i.selected = i === item
+      return i
+    })
   },
   SET_TOPBAR_ITEMS (state, items) {
     state.topBarItems = items
