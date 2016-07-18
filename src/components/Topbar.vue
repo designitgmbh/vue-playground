@@ -12,9 +12,8 @@
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <a @click="toggleSideBar" href="javascript:void(0)">
-                <i v-show="!sideBarShown" class="zi zi-menu animated" transition="sideBarToggle"></i>
-                <i v-show="sideBarShown" class="zi zi-close animated" transition="sideBarToggle"></i>
+              <a @click="toggleSideBar" href="javascript:void(0)" v-bind:class="['animated', {'rotateIn': sideBarShown, 'zoomIn': !sideBarShown}]">
+                <i :class="['zi', {'zi-menu' : !sideBarShown, 'zi-close': sideBarShown}]" ></i>
               </a>
             </li>
             <li v-for="item in items">
@@ -32,13 +31,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
-Vue.transition('sideBarToggle', {
-  enterClass: 'rotateIn',
-  leaveClass: 'hidden'
-})
-
 export default {
   vuex: {
     getters: {
