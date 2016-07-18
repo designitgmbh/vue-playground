@@ -21,13 +21,23 @@
   import {alert as Alert} from 'vue-strap'
 
   export default {
-    components: {
-      Alert
-    },
     data  () {
       return {
         alertShown: false
       }
+    },
+    ready () {
+      this.loadSidebar()
+    },
+    vuex: {
+      actions: {
+        loadSidebar: ({dispatch}) => dispatch('SET_SIDEBAR_ITEMS', [
+          {text: 'Participant dashboard', description: 'Allows tracking progress', path: '/dashboard', icon: 'zi-chart-pie', selected: false}
+        ])
+      }
+    },
+    components: {
+      Alert
     }
   }
 </script>

@@ -7,10 +7,7 @@ Vue.use(Vuex)
 
 const state = {
   url: '/',
-  sideBarItems: [
-    {text: 'General', description: 'Basic study settings', path: '/general', icon: 'zi-cog', selected: false},
-    {text: 'Notifications', description: 'Modify type of notifications', path: '/notifications', icon: 'zi-notifications-outline', selected: false}
-  ],
+  sideBarItems: [],
   sideBarShown: false,
   topBarItems: [
     {text: 'Foo', path: '/foo'},

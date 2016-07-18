@@ -5,6 +5,17 @@
   import {alert as Alert} from 'vue-strap'
 
   export default {
+    ready () {
+      this.loadSidebar()
+    },
+    vuex: {
+      actions: {
+        loadSidebar: ({dispatch}) => dispatch('SET_SIDEBAR_ITEMS', [
+          {text: 'General', description: 'Basic study settings', path: '/general', icon: 'zi-cog', selected: false},
+          {text: 'Notifications', description: 'Modify type of notifications', path: '/notifications', icon: 'zi-notifications-outline', selected: false}
+        ])
+      }
+    },
     components: {
       Alert
     }

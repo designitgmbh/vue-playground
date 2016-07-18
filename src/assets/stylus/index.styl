@@ -1,5 +1,6 @@
+@import './variables.styl'
 #wrapper
-    padding-left: 400px
+    margin-left: side_bar_width
     -webkit-transition: all 0.5s ease
     -moz-transition: all 0.5s ease
     -o-transition: all 0.5s ease
@@ -7,24 +8,10 @@
     overflow: hidden
 
 #wrapper.toggled
-    padding-left: 0
-
-#sidebar-wrapper
-    z-index: 1000
-    position: fixed
-    left: 400px
-    width: 400px
-    height: 100%
-    margin-left: -400px
-    overflow-y: auto
-    background: #f2f2f2
-    -webkit-transition: all 0.5s ease
-    -moz-transition: all 0.5s ease
-    -o-transition: all 0.5s ease
-    transition: all 0.5s ease
+    margin-left: 0
 
 #wrapper.toggled #sidebar-wrapper
-    width: 0
+    margin-left: (-2) * side_bar_width
 
 #page-content-wrapper
     width: 100%
