@@ -1,0 +1,1 @@
+export const SET_TOPBAR_ITEMS = 'SET_TOPBAR_ITEMS'

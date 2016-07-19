@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default topbar-nav">
       <div class="top-header">
         <div class="navbar-header">
-          <a class="navbar-brand topbar-brand" v-link="{ path: '/' }">
+          <a class="navbar-brand topbar-brand" v-link="{ path: '/' }" @click="toggleSidebar(false)">
               <img class="logo" src="../assets/img/logo.png">
               playground
           </a>
@@ -11,18 +11,17 @@
       <div id="navbar" class="navbar-collapse">
         <div>
           <ul class="nav navbar-nav">
-            <li>
-              <a @click="toggleSideBar" href="javascript:void(0)" v-bind:class="['animated', {'rotateIn': sideBarShown, 'zoomIn': !sideBarShown}]">
-                <i :class="['zi', {'zi-menu' : !sideBarShown, 'zi-close': sideBarShown}]" ></i>
+            <li v-if="isNotRootRoute">
+              <a @click="toggleSidebar" href="javascript:void(0)" v-bind:class="['animated', {'rotateIn': sidebarShown, 'zoomIn': !sidebarShown}]">
+                <i :class="['zi', {'zi-menu' : !sidebarShown, 'zi-close': sidebarShown}]" ></i>
               </a>
             </li>
-            <li v-for="item in items">
-              <a v-bind:class="{ 'active' : item.path == this.currentUrl  }" 
-                @click="changeUrl(item.path)" 
-                v-link="{ path: item.path }"
-              >
-                {{item.text}}
-              </a>
+            <li v-for="item in items" v-bind:class="{ 'active' : isActive(item) }">
+                <a @click="doUrlChange(item.path)"
+                  v-link="{ path: item.path }">
+                  {{item.text}}
+                </a>
+                <div v-show="isActive(item)" class="marker animated" transition="topBarItemToggle"></div>
             </li>
           </ul>
         </div>
@@ -31,16 +30,42 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { items } from '../vuex/modules/components/topbar/getters'
+import { sidebarShown } from '../vuex/modules/components/sidebar/getters'
+import { toggleSidebar } from '../vuex/modules/components/sidebar/actions'
+import { currentUrl } from '../vuex/getters'
+import { changeUrl } from '../vuex/actions'
+
+Vue.transition('topBarItemToggle', {
+  enterClass: 'zoomIn',
+  leaveClass: 'zoomOut'
+})
+
 export default {
+  computed: {
+    isNotRootRoute () {
+      return this.$route.path.length > 1
+    }
+  },
+  methods: {
+    isActive (item) {
+      return this.$route.path.indexOf(item.path) !== -1
+    },
+    doUrlChange (url) {
+      this.changeUrl(url)
+      this.toggleSidebar(true)
+    }
+  },
   vuex: {
     getters: {
-      currentUrl: state => state.url,
-      sideBarShown: state => state.sideBarShown,
-      items: state => state.topBarItems
+      currentUrl,
+      sidebarShown,
+      items
     },
     actions: {
-      changeUrl: ({ dispatch }, url) => dispatch('SET_URL', url),
-      toggleSideBar: ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
+      changeUrl,
+      toggleSidebar
     }
   }
 }
@@ -75,7 +100,7 @@ export default {
     .topbar-nav .nav.navbar-nav > li > a
       line-height: 30px
 
-    .topbar-nav .nav.navbar-nav > li > a.active
+    .topbar-nav .nav.navbar-nav > li > .marker
       border-bottom: 3px solid #8dc1ff
 
     @media(max-width:768px)

@@ -8,12 +8,13 @@ import './assets/icons/zondicons/style.css'
 import './assets/css/animate.css'
 import 'bootstrap/less/bootstrap.less'
 import 'font-awesome/css/font-awesome.css'
-import './resources/transitions.js'
+import './resources/transitions'
 
 // components
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
-import store from './stores/store'
+import store from './vuex/store'
+import { sidebarShown } from './vuex/modules/components/sidebar/getters'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -40,10 +41,10 @@ router.start(Vue.extend({
     Sidebar,
     Topbar
   },
-  store: store,
+  store,
   vuex: {
     getters: {
-      sideBarShown: state => state.sideBarShown
+      sidebarShown
     }
   }
 }), '#app')

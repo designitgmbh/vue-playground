@@ -22,17 +22,16 @@
 </template>
 
 <script>
+import { items } from '../vuex/modules/components/sidebar/getters'
+import { selectSidebarItem } from '../vuex/modules/components/sidebar/actions'
+
 export default {
   vuex: {
     getters: {
-      currentUrl: state => state.url,
-      sideBarShown: state => state.sideBarShown,
-      items: state => state.sideBarItems
+      items
     },
     actions: {
-      changeUrl: ({ dispatch }, url) => dispatch('SET_URL', url),
-      selectSidebarItem: ({ dispatch }, item) => dispatch('SELECT_SIDEBAR_ITEM', item),
-      toggleSideBar: ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
+      selectSidebarItem
     }
   }
 }

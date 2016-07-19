@@ -32,7 +32,7 @@
     vuex: {
       actions: {
         loadSidebar: ({dispatch}) => dispatch('SET_SIDEBAR_ITEMS', [
-          {text: 'Participant dashboard', description: 'Allows tracking progress', path: '/dashboard', icon: 'zi-chart-pie', selected: false}
+          {text: 'Participant dashboard', description: 'Allows tracking progress', path: '/foo/dashboard', icon: 'zi-chart-pie', selected: false}
         ])
       }
     },
