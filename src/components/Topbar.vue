@@ -97,6 +97,9 @@ export default {
       color: #fff
       background: none
 
+    .topbar-nav .navbar-collapse
+      padding-left: 0px
+
     .topbar-nav .nav.navbar-nav > li > a
       line-height: 30px
 
@@ -108,8 +111,8 @@ export default {
         display: inline-block
 
       .topbar-nav .navbar-collapse
-          overflow: hidden
-          overflow-x: auto
+        overflow: hidden
+        overflow-x: auto
 
       .topbar-nav .navbar-nav
         width: 800px
