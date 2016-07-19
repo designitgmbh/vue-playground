@@ -71,17 +71,24 @@ export default {
 }
 </script>
 <style lang="stylus">
+    @import '../assets/stylus/variables.styl'
+
     .topbar-nav
       margin-bottom: 0px
-      min-height: 60px
+      min-height: top_bar_brand_height
       background-color: #fafafa
+      position: fixed
+      top: 0
+      left: 0
+      width: 100%
+      z-index: 9999
 
     .topbar-nav .top-header
-      height: 60px
+      height: top_bar_header_height
       background-color: #232323
 
     .topbar-nav .topbar-brand 
-      height: 60px
+      height: top_bar_brand_height
       font-size: 18px
       width: 250px
 
@@ -97,16 +104,17 @@ export default {
       color: #fff
       background: none
 
-    .topbar-nav .navbar-collapse
-      padding-left: 0px
+    @media(min-width: 768px)
+      .topbar-nav .navbar-collapse
+        padding-left: 0px
 
     .topbar-nav .nav.navbar-nav > li > a
       line-height: 30px
 
     .topbar-nav .nav.navbar-nav > li > .marker
-      border-bottom: 3px solid #8dc1ff
+      border-bottom: top_bar_active_item_marker_width solid #8dc1ff
 
-    @media(max-width:768px)
+    @media(max-width:767px)
       .topbar-nav .nav > li
         display: inline-block
 
