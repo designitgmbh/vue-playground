@@ -12,11 +12,11 @@
         <div>
           <ul class="nav navbar-nav">
             <li v-if="isNotRootRoute">
-              <a @click="toggleSidebar" href="javascript:void(0)" v-bind:class="['animated', {'rotateIn': sidebarShown, 'zoomIn': !sidebarShown}]">
+              <a @click="toggleSidebar" href="javascript:void(0)" :class="['animated', {'rotateIn': sidebarShown, 'zoomIn': !sidebarShown}]">
                 <i :class="['zi', {'zi-menu' : !sidebarShown, 'zi-close': sidebarShown}]" ></i>
               </a>
             </li>
-            <li v-for="item in items" v-bind:class="{ 'active' : isActive(item) }">
+            <li v-for="item in items" :class="{ 'active' : isActive(item) }">
                 <a @click="doUrlChange(item.path)"
                   v-link="{ path: item.path }">
                   {{item.text}}

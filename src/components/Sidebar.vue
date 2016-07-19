@@ -2,7 +2,7 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li v-for="item in items">
-            <a v-bind:class="{ 'active' : item.selected }" 
+            <a :class="{ 'active' : item.selected }" 
                @click="selectSidebarItem(item)"
                v-link="{ path: item.path }"
             >
