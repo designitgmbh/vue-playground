@@ -35,7 +35,6 @@ import { items } from '../vuex/modules/components/topbar/getters'
 import { sidebarShown } from '../vuex/modules/components/sidebar/getters'
 import { toggleSidebar } from '../vuex/modules/components/sidebar/actions'
 import { currentUrl } from '../vuex/getters'
-import { changeUrl } from '../vuex/actions'
 
 Vue.transition('topBarItemToggle', {
   enterClass: 'zoomIn',
@@ -53,7 +52,6 @@ export default {
       return this.$route.path.indexOf(item.path) !== -1
     },
     doUrlChange (url) {
-      this.changeUrl(url)
       this.toggleSidebar(true)
     }
   },
@@ -64,7 +62,6 @@ export default {
       items
     },
     actions: {
-      changeUrl,
       toggleSidebar
     }
   }
@@ -81,7 +78,7 @@ export default {
       top: 0
       left: 0
       width: 100%
-      z-index: 9999
+      z-index: 2
 
     .topbar-nav .top-header
       height: top_bar_header_height

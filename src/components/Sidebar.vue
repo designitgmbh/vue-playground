@@ -52,6 +52,7 @@ export default {
       -moz-transition: all 0.5s ease
       -o-transition: all 0.5s ease
       transition: all 0.5s ease
+      overflow-x: hidden
 
     .sidebar-nav
       position: absolute

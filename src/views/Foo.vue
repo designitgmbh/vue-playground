@@ -19,6 +19,7 @@
 </template>
 <script>
   import {alert as Alert} from 'vue-strap'
+  import { setSidebarItems } from '../vuex/modules/components/sidebar/actions'
 
   export default {
     data  () {
@@ -27,13 +28,13 @@
       }
     },
     ready () {
-      this.loadSidebar()
+      this.setSidebarItems([
+        {text: 'Participant dashboard', description: 'Allows tracking progress', path: '/foo/dashboard', icon: 'zi-chart-pie', selected: false}
+      ])
     },
     vuex: {
       actions: {
-        loadSidebar: ({dispatch}) => dispatch('SET_SIDEBAR_ITEMS', [
-          {text: 'Participant dashboard', description: 'Allows tracking progress', path: '/foo/dashboard', icon: 'zi-chart-pie', selected: false}
-        ])
+        setSidebarItems
       }
     },
     components: {
